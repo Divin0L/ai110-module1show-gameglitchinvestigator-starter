@@ -25,13 +25,12 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+The games purpose is to entartain the user by making the user guess a random number from 1-100 using hints given to them. The main bugs i found were that the correct answer kept switching every time a button was clicked, the hints were off, and that the new game button did'nt work. To fix these i fixed a bug that was converting the correct number into a string, then I reversed the hint messages so they matched with the correct comaprisions and finally the game button logic was fixed by applying the rerun function to make the button work only when needed. 
+
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+![Screenshot pic](Screenie.png)
 
 ## 🚀 Stretch Features
 
