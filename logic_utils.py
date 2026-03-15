@@ -35,22 +35,30 @@ def parse_guess(raw: str):
     return True, value, None
 
 
-# CHANGED: fixed the comparison bug — both guess and secret are now kept as
-# ints so the > / < comparisons are always numeric, not lexicographic.
-# The original app.py code was casting secret to str on even attempts, which
-# caused string-vs-int comparisons to raise TypeError and produced wrong
-# "Too High" / "Too Low" results.
-def check_guess(guess: int, secret: int):
+# CHANGED: check_guess now returns only the outcome string ("Win", "Too High",
+# "Too Low") so tests can assert directly on the return value.
+# Previously returned a tuple (outcome, message) which broke the test assertions.
+# Both arguments are kept as ints — no str() casting — so comparisons are
+# always numeric and correct.
+def check_guess(guess: int, secret: int) -> str:
     """
-    Compare guess to secret and return (outcome, message).
+    Compare guess to secret and return the outcome as a string.
 
-    outcome values: "Win", "Too High", "Too Low"
+    Returns: "Win", "Too High", or "Too Low"
     """
     if guess == secret:
-        return "Win", "🎉 Correct!"
+        return "Win"
     if guess > secret:
-        return "Too High", "📈 Go HIGHER!"
-    return "Too Low", "📉 Go LOWER!"
+        return "Too High"
+    return "Too Low"
+
+
+# Hint messages shown in the UI, keyed by outcome from check_guess.
+HINT_MESSAGES = {
+    "Win": "🎉 Correct!",
+    "Too High": "📈 Go HIGHER!",
+    "Too Low": "📉 Go LOWER!",
+}
 
 
 # CHANGED: moved update_score here from app.py for the same reason.
