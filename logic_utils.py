@@ -54,10 +54,12 @@ def check_guess(guess: int, secret: int) -> str:
 
 
 # Hint messages shown in the UI, keyed by outcome from check_guess.
+# FIXED: hints were backwards — "Too High" means the guess is above the secret
+# so the player needs to go LOWER, and "Too Low" means go HIGHER.
 HINT_MESSAGES = {
     "Win": "🎉 Correct!",
-    "Too High": "📈 Go HIGHER!",
-    "Too Low": "📉 Go LOWER!",
+    "Too High": "📉 Go LOWER!",
+    "Too Low": "📈 Go HIGHER!",
 }
 
 
